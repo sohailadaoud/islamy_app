@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 
-class ItemHadethName extends StatelessWidget {
-  String title;
+import 'hadeth_details_screen.dart';
+import 'hadeth_tab.dart';
 
-  ItemHadethName({required this.title});
+class ItemHadethName extends StatelessWidget {
+  // String title;
+  // ItemHadethName({required this.title});
+
+  Hadeth hadeth;
+
+  ItemHadethName({required this.hadeth});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Navigator.of(context).pushNamed(SurahDetailsScreen.routeName,
-        //     arguments: SurahDetailsArgs(name: name, index: index));
+        Navigator.of(context)
+            .pushNamed(HadethDetailsScreen.routeName, arguments: hadeth);
       },
       child: Text(
-        title,
+        hadeth.title,
         style: Theme.of(context).textTheme.titleSmall,
         textAlign: TextAlign.center,
       ),

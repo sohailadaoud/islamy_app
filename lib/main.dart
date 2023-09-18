@@ -5,6 +5,8 @@ import 'package:islamy_app/my_theme.dart';
 import 'package:islamy_app/provider/app_config_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'home/hadeth/hadeth_details_screen.dart';
+
 void main() {
   runApp(ChangeNotifierProvider(
       create: ((context) => AppCongigProvider()), child: MyApp()));
@@ -20,6 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
         SurahDetailsScreen.routeName: (context) => SurahDetailsScreen(),
+        HadethDetailsScreen.routeName: (context) => HadethDetailsScreen(),
       },
       theme: MyTheme.lightTheme,
       darkTheme: MyTheme.darkTheme,
