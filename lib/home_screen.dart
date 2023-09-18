@@ -3,6 +3,9 @@ import 'package:islamy_app/home/hadeth/hadeth_tab.dart';
 import 'package:islamy_app/home/quran/quran_tab.dart';
 import 'package:islamy_app/home/radio/radio_tab.dart';
 import 'package:islamy_app/home/sebha/sebha_tab.dart';
+import 'package:islamy_app/home/settings/settings_tab.dart';
+import 'package:islamy_app/provider/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home-screen';
@@ -16,14 +19,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppCongigProvider>(context);
+
     return Stack(
       children: [
-        Image.asset(
-          'assets/images/main_background.png',
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.fill,
-        ),
+        provider.isDarkMode()
+            ? Image.asset(
+                'assets/images/dark_bg.png',
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+              )
+            : Image.asset(
+                'assets/images/main_background.png',
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+              ),
         Scaffold(
           appBar: AppBar(
             title: Text(
@@ -54,6 +66,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/icon_radio.png')),
                     label: 'radio'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.settings), label: 'setting'),
               ],
             ),
           ),
@@ -63,5 +77,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget> tabs = [QuranTab(), HadethTab(), SebhaTab(), RadioTab()];
+  List<Widget> tabs = [
+    QuranTab(),
+    HadethTab(),
+    SebhaTab(),
+    RadioTab(),
+    SettingsTab()
+  ];
 }

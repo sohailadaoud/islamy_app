@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamy_app/home/quran/item_surah_details.dart';
 import 'package:islamy_app/my_theme.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/app_config_provider.dart';
 
 class SurahDetailsScreen extends StatefulWidget {
   static const String routeName = 'surah_details';
@@ -15,18 +18,27 @@ class _SurahDetailsScreenState extends State<SurahDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppCongigProvider>(context);
+
     var args = ModalRoute.of(context)?.settings.arguments as SurahDetailsArgs;
     if (verses.isEmpty) {
       loadFile(args.index);
     }
 
     return Stack(children: [
-      Image.asset(
-        'assets/images/main_background.png',
-        width: double.infinity,
-        height: double.infinity,
-        fit: BoxFit.fill,
-      ),
+      provider.isDarkMode()
+          ? Image.asset(
+              'assets/images/dark_bg.png',
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            )
+          : Image.asset(
+              'assets/images/main_background.png',
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
       Scaffold(
         appBar: AppBar(
           title: Text(
@@ -36,28 +48,28 @@ class _SurahDetailsScreenState extends State<SurahDetailsScreen> {
         ),
         body: verses.length == 0
             ? Center(
-                child: CircularProgressIndicator(
-                color: Theme.of(context).primaryColor,
-              ))
+            child: CircularProgressIndicator(
+              color: Theme.of(context).primaryColor,
+            ))
             : Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.05,
-                  vertical: MediaQuery.of(context).size.height * 0.06,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: MyTheme.whiteColor,
-                ),
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return ItemSurahDetails(
-                      content: verses[index],
-                      index: index,
-                    );
-                  },
-                  itemCount: verses.length,
-                ),
-              ),
+          margin: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.05,
+            vertical: MediaQuery.of(context).size.height * 0.06,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: MyTheme.whiteColor,
+          ),
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return ItemSurahDetails(
+                content: verses[index],
+                index: index,
+              );
+            },
+            itemCount: verses.length,
+          ),
+        ),
       ),
     ]);
   }
