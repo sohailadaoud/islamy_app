@@ -1,0 +1,16 @@
+{
+"app_title" : "إسلامي",
+"quran" : "قرآن",
+"hadeth" : "حديث" ,
+"sebha" : "سبحه",
+"radio" : "راديو",
+"settings" : "إعدادات",
+"theme" : "النمط",
+"english" : "إنجليزي",
+"arabic" : "عربي",
+"light" : "مضيء",
+"dark" : "ليلي",
+"language" : "اللغة",
+"hadeth_name" : "اسم الحديث",
+"surah_name" : "اسم السورة"
+}
