@@ -17,6 +17,7 @@ class AppCongigProvider extends ChangeNotifier {
       return;
     }
     appLanguage = newLanguage;
+    notifyListeners();
   }
 
   bool isDarkMode() {
