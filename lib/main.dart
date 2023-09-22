@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamy_app/home/quran/surah_details_screen.dart';
 import 'package:islamy_app/home_screen.dart';
 import 'package:islamy_app/my_theme.dart';
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.lightTheme,
       darkTheme: MyTheme.darkTheme,
       themeMode: provider.appTheme,
+      locale: Locale(provider.appLanguage),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
 }
