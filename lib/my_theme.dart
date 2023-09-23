@@ -22,6 +22,16 @@ class MyTheme {
       unselectedItemColor: whiteColor,
       showUnselectedLabels: true,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+      primary: primaryLight,
+      onPrimary: whiteColor,
+      textStyle: TextStyle(fontSize: 30),
+      padding: EdgeInsets.all(4),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+    )),
     textTheme: TextTheme(
         titleLarge: TextStyle(
           fontSize: 30,
@@ -52,6 +62,16 @@ class MyTheme {
       unselectedItemColor: whiteColor,
       showUnselectedLabels: true,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+      primary: primaryDark,
+      onPrimary: whiteColor,
+      textStyle: TextStyle(fontSize: 30),
+      padding: EdgeInsets.all(4),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+    )),
     textTheme: TextTheme(
         titleLarge: TextStyle(
           fontSize: 30,
